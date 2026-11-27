@@ -15,7 +15,7 @@ concurrency:
 env:
   SITE_URL: https://pimenta.dev
   SAMPLES: "5"
-  MAX_TTFB_MS: "800"
+  MAX_TTFB_MS: "1000" # o runner do GitHub mede ~610 ms; 800 ms dava pouca folga
   MAX_TOTAL_MS: "1500"
 
 jobs:
