@@ -1,0 +1,6 @@
+timestamp_utc,source,url,http_code,dns_ms,connect_ms,tls_ms,ttfb_ms,total_ms
+2026-11-27T06:11:23Z,github-actions,https://pimenta.dev,200,77,251,433,608,642
+2026-11-27T06:11:24Z,github-actions,https://pimenta.dev,200,74,248,428,603,642
+2026-11-27T06:11:26Z,github-actions,https://pimenta.dev,200,94,269,449,624,663
+2026-11-27T06:11:28Z,github-actions,https://pimenta.dev,200,76,250,431,626,647
+2026-11-27T06:11:29Z,github-actions,https://pimenta.dev,200,38,213,394,590,609
