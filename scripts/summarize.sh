@@ -35,17 +35,17 @@ stats() {
     }'
 }
 
-printf '%-16s %7s %7s | %-24s | %-24s\n' "source" "amostras" "falhas" "TTFB ms (méd p50 p95 máx)" "total ms (méd p50 p95 máx)"
-for src in $(echo "$rows" | cut -d, -f2 | sort -u); do
-  sub="$(echo "$rows" | awk -F, -v s="$src" '$2 == s')"
+printf '%-16s %-34s %8s %6s | %-24s | %-24s\n' "source" "url" "amostras" "falhas" "TTFB ms (méd p50 p95 máx)" "total ms (méd p50 p95 máx)"
+while IFS=, read -r src url; do
+  sub="$(echo "$rows" | awk -F, -v s="$src" -v u="$url" '$2 == s && $3 == u')"
   ok="$(echo "$sub" | awk -F, '$4 ~ /^[23][0-9][0-9]$/')"
   n="$(echo "$sub" | wc -l)"
   n_ok="$( [[ -n "$ok" ]] && echo "$ok" | wc -l || echo 0)"
   ttfb="$(echo "$ok" | awk -F, 'NF {print $8}' | stats)"
   total="$(echo "$ok" | awk -F, 'NF {print $9}' | stats)"
-  printf '%-16s %7d %7d | %-24s | %-24s\n' "$src" "$n" "$((n - n_ok))" "$ttfb" "$total"
-done
+  printf '%-16s %-34s %8d %6d | %-24s | %-24s\n' "$src" "$url" "$n" "$((n - n_ok))" "$ttfb" "$total"
+done < <(echo "$rows" | cut -d, -f2,3 | sort -u)
 
 echo
 echo "5 medições mais lentas (TTFB):"
-echo "$rows" | sort -t, -k8,8nr | head -n5 | awk -F, '{printf "  %s  %-14s http=%s ttfb=%sms total=%sms\n", $1, $2, $4, $8, $9}'
+echo "$rows" | sort -t, -k8,8nr | head -n5 | awk -F, '{printf "  %s  %-14s %s http=%s ttfb=%sms total=%sms\n", $1, $2, $3, $4, $8, $9}'
