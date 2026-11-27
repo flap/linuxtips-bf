@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Response time check on session start",
+      "description": "Mede o tempo de resposta de https://pimenta.dev ao abrir uma sessão e coloca o resultado no contexto do agente.",
+      "trigger": "SessionStart",
+      "timeout": 90,
+      "action": {
+        "type": "command",
+        "command": "[ -f scripts/check-response.sh ] || cd linuxtips-bf; bash scripts/check-response.sh --samples 3 --source kiro-session; exit 0"
+      }
+    }
+  ]
+}
