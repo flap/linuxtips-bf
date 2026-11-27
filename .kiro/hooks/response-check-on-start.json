@@ -3,12 +3,12 @@
   "hooks": [
     {
       "name": "Response time check on session start",
-      "description": "Mede o tempo de resposta de https://pimenta.dev ao abrir uma sessão e coloca o resultado no contexto do agente.",
+      "description": "Mede o tempo de resposta de https://pimenta.dev e da foto de perfil ao abrir uma sessão e coloca o resultado no contexto do agente.",
       "trigger": "SessionStart",
       "timeout": 90,
       "action": {
         "type": "command",
-        "command": "[ -f scripts/check-response.sh ] || cd linuxtips-bf; bash scripts/check-response.sh --samples 3 --source kiro-session; exit 0"
+        "command": "[ -f scripts/check-response.sh ] || cd linuxtips-bf; bash scripts/check-response.sh --samples 3 --source kiro-session; echo; bash scripts/check-response.sh --url https://pimenta.dev/profile.jpg --samples 3 --source kiro-session; exit 0"
       }
     }
   ]

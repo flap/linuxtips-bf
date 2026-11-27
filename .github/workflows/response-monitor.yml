@@ -14,6 +14,7 @@ concurrency:
 
 env:
   SITE_URL: https://pimenta.dev
+  PHOTO_URL: https://pimenta.dev/profile.jpg # foto de perfil exibida na página
   SAMPLES: "5"
   MAX_TTFB_MS: "1000" # o runner do GitHub mede ~610 ms; 800 ms dava pouca folga
   MAX_TOTAL_MS: "1500"
@@ -38,10 +39,15 @@ jobs:
         id: measure
         run: |
           set +e
-          bash scripts/check-response.sh \
-            --csv metrics-branch/response-times.csv \
-            --source github-actions
-          echo "status=$?" >> "$GITHUB_OUTPUT"
+          status=0
+          for url in "$SITE_URL" "$PHOTO_URL"; do
+            bash scripts/check-response.sh \
+              --url "$url" \
+              --csv metrics-branch/response-times.csv \
+              --source github-actions || status=$?
+            echo
+          done
+          echo "status=$status" >> "$GITHUB_OUTPUT"
 
       - name: Commit measurements
         working-directory: metrics-branch
