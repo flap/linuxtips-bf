@@ -39,3 +39,13 @@ timestamp_utc,source,url,http_code,dns_ms,connect_ms,tls_ms,ttfb_ms,total_ms
 2026-11-28T00:14:41Z,github-actions,https://pimenta.dev/profile.jpg,200,108,222,339,454,641
 2026-11-28T00:14:42Z,github-actions,https://pimenta.dev/profile.jpg,200,11,124,243,357,544
 2026-11-28T00:14:44Z,github-actions,https://pimenta.dev/profile.jpg,200,3,117,235,349,538
+2026-11-28T07:51:40Z,github-actions,https://pimenta.dev,200,62,209,360,508,540
+2026-11-28T07:51:41Z,github-actions,https://pimenta.dev,200,157,307,459,625,642
+2026-11-28T07:51:43Z,github-actions,https://pimenta.dev,200,108,255,406,553,586
+2026-11-28T07:51:44Z,github-actions,https://pimenta.dev,200,59,205,357,503,536
+2026-11-28T07:51:46Z,github-actions,https://pimenta.dev,200,53,199,351,498,531
+2026-11-28T07:51:47Z,github-actions,https://pimenta.dev/profile.jpg,200,74,223,375,525,770
+2026-11-28T07:51:48Z,github-actions,https://pimenta.dev/profile.jpg,200,3,152,306,456,704
+2026-11-28T07:51:50Z,github-actions,https://pimenta.dev/profile.jpg,200,3,149,300,463,687
+2026-11-28T07:51:52Z,github-actions,https://pimenta.dev/profile.jpg,200,3,149,302,449,692
+2026-11-28T07:51:54Z,github-actions,https://pimenta.dev/profile.jpg,200,91,238,390,537,781
